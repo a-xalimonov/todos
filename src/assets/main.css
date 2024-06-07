@@ -1,0 +1,40 @@
+:root {
+    --color-background: #e2e2e2;
+    --color-panel-main: #ffffff;
+    --color-panel-dark: #bbbbbb;
+    --color-text-light: #797979;
+    --color-text-dark: #494949;
+    --color-highlight-main: #c739399c;
+    --color-checkmark-inactive: #797979;
+    --color-checkmark-active: #00580c;
+}
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    margin: 0px;
+}
+button {
+    padding: 0px;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: none;
+    background-color: transparent;
+}
+input[type="text"] {
+    border: none;
+    font-size: inherit;
+    color: inherit;
+    outline: none;
+    font-family: inherit;
+}
+button, input[type="text"]:focus {
+    z-index: 10;
+    position: relative;
+}
+input[type="text"]:focus {
+    box-shadow: 0px 0px 5px 2px var(--color-highlight-main);
+}
+div, input, span {
+    box-sizing: border-box;
+}
