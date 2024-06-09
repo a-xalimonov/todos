@@ -27,7 +27,7 @@ export default {
 </script>
 
 <template>
-    <li>
+    <li class="class-item">
         <div v-show="!isEdited" @dblclick="startEdit">
             <label class="custom-checkbox" :class="{ completed: item.completed }">
                 <input type="checkbox" @change="toggleTodo(item)" :checked="item.completed">
@@ -44,6 +44,8 @@ export default {
 <style scoped>
 .custom-checkbox {
     display: inline-block;
+    position: absolute;
+    left: 10px;
     box-sizing: border-box;
     border: solid 1px var(--color-checkmark-inactive);
     width: 30px;
@@ -65,10 +67,14 @@ input[type="checkbox"] {
     opacity: 0;
 }
 
-li {
+.class-item {
     border-top: solid 1px var(--color-background);
     position: relative;
-    /* height: 3rem; */
+}
+
+.class-item > * {
+    padding: 10px 10px 10px 66px;
+    font-size: 1.4rem;
 }
 
 .todo-label {
@@ -80,12 +86,10 @@ li {
     color: var(--color-text-light)
 }
 
-li>div {
+.class-item > div {
     height: 100%;
-    font-size: 1.4rem;
     display: flex;
     align-items: center;
-    padding: 10px;
 }
 
 .delete-todo-btn {
@@ -104,8 +108,5 @@ li:hover .delete-todo-btn {
 input[type="text"] {
     height: 100%;
     width: 100%;
-    font-size: 1.4rem;
-    padding: 10px;
-    padding-left: 66px;
 }
 </style>

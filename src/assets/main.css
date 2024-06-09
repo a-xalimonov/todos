@@ -23,7 +23,6 @@ button {
 }
 input[type="text"] {
     border: none;
-    font-size: inherit;
     color: inherit;
     outline: none;
     font-family: inherit;
