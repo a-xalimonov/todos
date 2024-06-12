@@ -2,13 +2,13 @@
 
 import TodoList from './components/TodoList.vue';
 import TodoInput from './components/TodoInput.vue';
-import PageSelector from './components/PageSelector.vue';
+import PageList from './components/PageList.vue';
 
 let lastPage = 1;
 
 export default {
 	components: {
-		TodoList, TodoInput, PageSelector
+		TodoList, TodoInput, PageList
 	},
 	data: function () {
 		return {
@@ -78,9 +78,9 @@ export default {
 	},
 	provide: function () {
 		return {
-			'deleteTodo': this.deleteTodo,
 			'toggleTodo': this.toggleTodo,
 			'renameTodo': this.renameTodo,
+			'deleteTodo': this.deleteTodo,
 			'selectPage': this.selectPage,
 			'renamePage': this.renamePage,
 			'deletePage': this.deletePage,
@@ -92,7 +92,7 @@ export default {
 <template>
 	<div id="app">
 		<h1>todo</h1>
-		<PageSelector :pages="pages" :selected="selected" @page-added="addPage" />
+		<PageList :pages="pages" :selected="selected" @page-added="addPage" />
 		<main>
 			<TodoInput @toggled-all="toggleAll" @new-todo="addTodo" />
 			<TodoList v-if="selectedList" :list="selectedList" @cleared="clearCompleted" />
@@ -106,14 +106,14 @@ export default {
 	max-width: 550px;
 }
 
-h1 {
+#app > h1 {
 	font-size: 5rem;
 	text-align: center;
 	width: 100%;
 	line-height: 0px;
 }
 
-main {
+#app > main {
 	box-shadow: 0px 0px 20px 0px #0000003d;
 }
 </style>

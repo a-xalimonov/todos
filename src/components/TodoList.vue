@@ -1,17 +1,19 @@
 <script>
-import FilterSelector from "./FilterSelector.vue";
-import TodoItem from "./TodoItem.vue";
+import TodoListFilter from "./TodoListFilter.vue";
+import TodoListItem from "./TodoListItem.vue";
 
 export default {
 	components: {
-		TodoItem, FilterSelector
+		TodoListItem, TodoListFilter
+	},
+	props: {
+		list: Array,
 	},
 	data: function () {
 		return {
 			filter: "all",
 		};
 	},
-	props: ["list"],
 	computed: {
 		completedList: function () {
 			return this.list.filter((todo) => todo.completed);
@@ -36,11 +38,11 @@ export default {
 <template>
 	<div class="todo-list-container">
 		<ul>
-			<todo-item v-for="todo in currentList" :item="todo" />
+			<TodoListItem v-for="(todo, index) in currentList" :key="index" :item="todo" />
 		</ul>
 		<div v-show="list.length" class="list-footer">
 			<label>Left: {{ activeList.length }}</label>
-			<FilterSelector v-model="filter" />
+			<TodoListFilter v-model="filter" />
 			<button v-show="completedList.length" @click="$emit('cleared')">Clear completed</button>
 		</div>
 	</div>
